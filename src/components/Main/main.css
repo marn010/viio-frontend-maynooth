@@ -1,0 +1,34 @@
+.RoomPic{
+  border: solid 1px black;
+  margin: 0% 15%;
+  display: flex;
+}
+.RoomPic img{
+  margin: auto;
+}
+.RecomendedRoomPic{
+  border: solid 1px black;
+  margin: 2% 10%;
+  align-items: center;
+  display: flex;
+}
+.RecomendedRoomPic img{
+  margin: auto;
+  border: solid 1px black;
+}
+.Recomended{
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+}
+.Recomended h2{
+  width: 100%;
+}
+.Recomended div{
+  width: 50%;
+}
+.hi{
+  width: 100%;
+  margin: auto;
+}
