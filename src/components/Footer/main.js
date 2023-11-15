@@ -10,4 +10,4 @@ export default function Footer(){
       <img src="./4.jpg" alt="" width="40px" height="40px"/>
     </div>
   )
-}
+} 
