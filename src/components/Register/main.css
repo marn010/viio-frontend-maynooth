@@ -1,0 +1,12 @@
+.signupBox{
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 5% auto 0% auto;
+}
+.signupBox label{
+  display: flex;
+  width: 100%;
+  margin: 3% auto;
+}

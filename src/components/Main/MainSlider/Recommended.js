@@ -1,8 +1,7 @@
-import Product from "./Product";
 import { Component } from "react";
+import RecomendedProduct from "./RecomendedProduct";
 
 import 'react-multi-carousel/lib/styles.css';
-import RecomendedProduct from "./RecomendedProduct";
 
 export default class Recomended extends Component {
   render(){

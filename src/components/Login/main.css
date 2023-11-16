@@ -1,0 +1,59 @@
+.login{
+  width: 50%;
+  max-width: 450px;
+  margin: 5% auto;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login h1{
+  margin: 0% auto 5% auto;
+}
+.form{
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0% auto;
+  justify-content: center;
+}
+.form label{
+  width: 100%;
+}
+.form div{
+  width: 100%;
+  display: flex;
+  margin: 1% auto;
+  justify-content: center;
+}
+.userInput{
+  width: 95%;
+  margin: auto;
+  border: solid 2px black;
+  border-radius: 5px;
+}
+.userCredentials{
+  position: relative;
+  width: 100%;
+}
+.userCredentials a{
+  position: absolute;
+  right: 5%;
+}
+
+.submitBTN{
+  width: 95%;
+  margin: auto;
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+}
+.social{
+  width: 95%;
+  margin: 2% auto;
+  background-color: transparent;
+}
+.social button{
+  border: solid 2px black;
+  border-radius: 5px;
+}
