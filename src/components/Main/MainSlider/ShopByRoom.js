@@ -6,7 +6,7 @@ import 'react-multi-carousel/lib/styles.css';
 
 export default class ShopByRoom extends Component {
   render(){
-    const { data } = this.props;
+    const data  = this.props.data
   const responsive = {
       desktop: {
         breakpoint: { max: 3000, min: 1024 },
@@ -25,6 +25,7 @@ export default class ShopByRoom extends Component {
       },
   };
   let id =-1;
+  const cart=3;
   return (
     <div>
       <h3>
@@ -50,11 +51,11 @@ export default class ShopByRoom extends Component {
         renderDotsOutside={false}
       >
         {
-          data.map(() => {
+          data?.carts[0].products.map((item,key) => {
             id = id +1;
               return (
-                <div className="ProductBox">
-                    <Product id={id} key={id}/>
+                <div className="ShopBox" key={key}>
+                    <Product id={id} key={id} data={data} cart={cart}/>
                 </div>
               );
           })

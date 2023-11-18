@@ -1,26 +1,28 @@
-import { Component } from "react";
 import RecomendedProduct from "./RecomendedProduct";
+
 
 import 'react-multi-carousel/lib/styles.css';
 
-export default class Recomended extends Component {
-  render(){
-    const {data}=this.props
+export default function Recomended (props){
+  
+  const {data}=props;
+  
+  
+    
     let id=-1;
     return(
       <div className="Recomended">
         <h2>Recomended for you</h2>
           {
-            data.map(() => {
+            data?.carts[0].products.map((item,key) => {
               id = id +1;
                 return (
-                  <div className="hi">
-                      <RecomendedProduct id={id} key={id}/>
+                  <div className="hi" key={key}>
+                      <RecomendedProduct id={key} key={id} data={data}/>
                   </div>
                 );
             })
           }              
       </div>
     )
-  }
 }

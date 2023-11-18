@@ -1,5 +1,5 @@
 .RoomPic{
-  border: solid 1px black;
+  
   margin: 0% 15%;
   display: flex;
 }
@@ -7,14 +7,17 @@
   margin: auto;
 }
 .RecomendedRoomPic{
-  border: solid 1px black;
+  display: flex;
+  flex-wrap: wrap;
   margin: 2% 10%;
   align-items: center;
   display: flex;
 }
 .RecomendedRoomPic img{
   margin: auto;
-  border: solid 1px black;
+  border: 1px solid grey;
+  width: 100%;
+  height: 100%;
 }
 .Recomended{
   display: flex;
@@ -25,10 +28,19 @@
 .Recomended h2{
   width: 100%;
 }
-.Recomended div{
-  width: 50%;
+
+.itemInfo{
+  width: 80%;
 }
 .hi{
-  width: 100%;
+  width: 50%;
   margin: auto;
+}
+.IdeasBox{
+  width: 100%;
+  height: auto;
+}
+.ShopBox{
+  width: 100%;
+  height: auto;
 }

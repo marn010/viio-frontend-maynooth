@@ -1,12 +1,13 @@
 import Carousel from "react-multi-carousel";
 import Product from "./Product";
-import { Component } from "react";
 
 import 'react-multi-carousel/lib/styles.css';
+import { Component} from "react";
 
-export default class RoomIdeas extends Component {
+
+export default class RoomIdeas extends Component {  
   render(){
-    const { data } = this.props;
+  const data = this.props.data
   const responsive = {
       desktop: {
         breakpoint: { max: 3000, min: 1024 },
@@ -25,6 +26,7 @@ export default class RoomIdeas extends Component {
       },
   };
   let id =-1;
+  const cart=2;
   return (
     <div>
       <h3>
@@ -45,16 +47,16 @@ export default class RoomIdeas extends Component {
         removeArrowOnDeviceType={["mobile"]}
         deviceType={this.props.deviceType}
         dotListClass="custom-dot-list-style"
-        itemClass="" /*carousel-item-padding*/
+        itemClass="" 
         centerMode={false}
         renderDotsOutside={false}
       >
         {
-          data.map(() => {
+          data?.carts[0].products.map((item,key) => {
             id = id +1;
               return (
-                <div className="ProductBox">
-                    <Product id={id} key={id}/>
+                <div className="IdeasBox" key={key}>
+                    { <Product id={id} key={id} data={data} cart={cart}/>}
                 </div>
               );
           })
@@ -63,5 +65,18 @@ export default class RoomIdeas extends Component {
     </div>
       
   );
-  }
 }
+}
+/*
+{console.log(data)}
+        {
+          data?.carts[0].products.map((item,key) => {
+            id = id +1;
+              return (
+                <div className="ProductBox" key={key}>
+                    { <Product id={id} key={id} data={data}/>}
+                </div>
+              );
+          })
+        }
+*/

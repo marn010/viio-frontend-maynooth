@@ -1,92 +1,130 @@
 import { useState } from "react";
-import { useAuth } from "../Auth/AuthProvider";
-import { Navigate } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
+import { Form, Input, Label, Button } from 'reactstrap'
+import { API_URL } from "../Auth/constants";
 
 import './main.css'
 
-async function loginUser(credentials) {
-  return fetch('', { //https://www.mecallapi.com/api/login
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(credentials)
-  })
-    .then(data => data.json())
- }
 
 
 export default function Login(){
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-const auth = useAuth();
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
 
-if(auth.isAuthenticated){
+/*if(auth.isAuthenticated){
   return <Navigate to="/main" />
-}
+}*/
 
 
-  const handleSubmit = async e => {
+  async function handleSubmit(e){
     e.preventDefault();
-    const response = await loginUser({
-      email,
-      password
+    try {
+      await fetch(`${API_URL}/login`,{
+        method:"POST",
+        mode: "cors",
+        headers: {
+          "Content-Type" : "application/json"
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      })
+      .then((res) => {
+        if(res.ok){
+          console.log("Login success")
+        }else{
+          console.log("Something went wrong")
+        }
+        return res.json();
+    })
+    .then((data) => {
+      if(data.accessToken){
+        alert("Login success")
+        localStorage.setItem("user",JSON.stringify(data))
+        navigate('/main')
+      }else{
+        alert("Usuario/Contraseña incorrectos")
+      }
     });
-    if ('accessToken' in response){
-      alert('login')
-      .then((value) =>{
-        localStorage.setItem('accessToken',response['accessToken']);
-        localStorage.setItem('user', JSON.stringify(response['user']));
-        window.location.href = "/";
-      });
-    } else{
-     //
-      alert('Failed') 
+
+    } catch (error) {
+      console.log("error: " + error)
     }
+    
   }
   
   return(
     <div className="login">
       <h1>MAYNOOTH</h1>
-      <form onSubmit={handleSubmit} className="form">
-        <label htmlFor="email">
+      <Form onSubmit={handleSubmit} className="form">
+        <Label htmlFor="email">
           Email
-        </label>
-        <input className="userInput"
+        </Label>
+        <Input className="userInput"
         type="email" 
         name="email" 
-        id="email" 
+        id="email"
+        value={email} 
         placeholder="your@email.com"
+        required
         onChange={e => setEmail(e.target.value)}/>
-        <label htmlFor="password">
+
+        <Label htmlFor="password">
           Password
-        </label><br/>
-        <input className="userInput"
-        type="password" name="password" id="password" placeholder="Password" 
-        onChange={e => setPassword(e.target.value)} /><br/>
+        </Label><br/>
+        <Input className="userInput"
+        type="password" 
+        name="password" 
+        id="password"
+        value={password} 
+        placeholder="Password" 
+        required
+        onChange={e => setPassword(e.target.value)}  /><br/>
 
         <div className="userCredentials">
-          <input type="checkbox" id="rememberme" name="rememberme" val="rememberme" />
-          <label htmlFor="rememberme" >
+          <Input type="checkbox" id="rememberme" name="rememberme" val="rememberme" />
+          <Label htmlFor="rememberme" >
             Remember me  
-          </label>
+          </Label>
           <a href="/forgot">
             Forgot password?
           </a>
         </div>
-        <button type="submit" className="submitBTN">Log in</button>
+        <Button type="submit" className="submitBTN">
+          Log in
+          </Button>
         <div>
           <h2>Or</h2>
         </div>
-          <button type="submit" className="social">
+          <Button type="button" className="social">
             Continue with Google
-          </button>
-          <button type="submit" className="social">
+          </Button>
+          <Button type="button" className="social">
             Continue with Facebook
-          </button>
+          </Button>
 
         <p>Don't have an account? <a href="/signup">Sign up</a></p>
-      </form>
+      </Form>
     </div>
   )
 }
+/*
+async function loginUser(credentials) {
+  return fetch(`${API_URL}/login`, { 
+    method: 'POST',
+    mode: "cors",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(credentials)
+  })
+    .then(
+      data => data.json(),
+    console.log("Login Success"))
+  }
+*/
+ 

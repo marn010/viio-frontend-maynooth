@@ -4,10 +4,18 @@ export default function Footer(){
   return(
     <div className="footer">
       <a href="/">Home</a>
-      <img src="./1.jpg" alt="" width="40px" height="40px"/>
-      <img src="./2.jpg" alt="" width="40px" height="40px"/>
-      <img src="./3.jpg" alt="" width="40px" height="40px"/>
-      <img src="./4.jpg" alt="" width="40px" height="40px"/>
+      <a href='/search'>
+        <img src="./assets/search.png" alt="" width="40px" height="40px"/>
+      </a>
+      <a href='/cart'>
+        <img src="./assets/cart.png" alt="" width="40px" height="40px"/>
+      </a>
+      <a href='/favorites' >
+        <img src="./assets/fav.png" alt="" width="40px" height="40px"/>
+      </a>
+      <a href='/login'>
+        <img src="./assets/profile.png" alt="" width="40px" height="40px"/>
+      </a>
     </div>
   )
 }

@@ -4,7 +4,8 @@ import { Routes, Route } from 'react-router-dom';
 import Main from './components/Main/main';
 import Login from './components/Login/main';
 import Signup from './components/Register/main';
-import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+
+import Product from './components/Product/main';
 
 function App() {
  
@@ -12,12 +13,11 @@ function App() {
     <div className="App">
       <header className="App-header">
       <Routes>
-        <Route path='/' element={<Login />} />
+        <Route path='/' element={<Main />} />
+        <Route path='/main' element={<Main />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
-        <Route path='/' element={<ProtectedRoute />}>
-          <Route path='/main' element={<Main />} />
-        </Route>
+        <Route path='/product' element={<Product />} />
       </Routes>
       </header>
     </div>
@@ -25,3 +25,10 @@ function App() {
 }
 
 export default App;
+
+/*
+<Route path='/' element={<ProtectedRoute />}>
+          <Route path='/main' element={<Main />} />
+        </Route>
+*/
+

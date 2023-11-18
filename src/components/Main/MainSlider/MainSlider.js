@@ -6,7 +6,7 @@ import 'react-multi-carousel/lib/styles.css';
 
 export default class Slider extends Component {
   render(){
-    const { data } = this.props;
+    const data  = this.props.data;
   const responsive = {
       desktop: {
         breakpoint: { max: 3000, min: 1024 },
@@ -25,6 +25,7 @@ export default class Slider extends Component {
       },
   };
   let id =-1;
+  const cart=0;
   return (
       <Carousel
         autoPlay={true}
@@ -46,11 +47,11 @@ export default class Slider extends Component {
         renderDotsOutside={false}
       >
         {
-          data.map(() => {
+          data?.carts[0].products.map((item,key) => {
             id = id +1;
               return (
-                <div className="ProductBox">
-                    <Product id={id}/>
+                <div className="ProductBox" key={key}>
+                    <Product id={id} key={id} data={data} cart={cart}/>
                 </div>
               );
           })

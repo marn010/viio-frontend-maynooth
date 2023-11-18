@@ -1,0 +1,47 @@
+.productBox{
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+.productBox img{
+  width: 60%;
+  margin: auto;
+}
+.productBox h2{
+  width: 100%;
+}
+.itemPrice{
+  width: 100%;
+  display: block;
+}
+.itemPrice p{
+  margin: 0.5% 0%;
+}
+.Colors{
+  width: 100%;
+}
+.Colors img{
+  width: 50px;
+}
+.description h3{
+  width: 100%;
+}
+.reviews{
+  width: 100%;
+}
+.userReview{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.userReview :first-child{
+  display: flex;
+}
+.userReview img{
+  width: 50px;
+  margin: 0;
+}
