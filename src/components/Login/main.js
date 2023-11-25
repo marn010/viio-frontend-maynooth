@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
 import { Form, Input, Label, Button } from 'reactstrap'
@@ -14,32 +15,29 @@ export default function Login(){
   const [password, setPassword] = useState('');
   
 
-/*if(auth.isAuthenticated){
-  return <Navigate to="/main" />
-}*/
-
 
   async function handleSubmit(e){
     e.preventDefault();
     try {
-      await fetch(`${API_URL}/login`,{
-        method:"POST",
-        mode: "cors",
-        headers: {
-          "Content-Type" : "application/json"
+      await axios({
+        method:'post',
+        url:`${API_URL}/login`,
+        headers:{
+        "Content-Type":"application/json"
         },
-        body: JSON.stringify({
+        data:{
           email,
           password,
-        }),
+        }
       })
       .then((res) => {
-        if(res.ok){
+        console.log("res: ",res)
+        if(res.statusText==="OK"){
           console.log("Login success")
         }else{
           console.log("Something went wrong")
         }
-        return res.json();
+        return res.data;
     })
     .then((data) => {
       if(data.accessToken){

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import axios from "axios";
+
 import { API_URL } from "../Auth/constants";
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import { useNavigate } from 'react-router-dom'
@@ -13,7 +15,20 @@ export default function Register(){
   async function handleSubmit(e){
     e.preventDefault();
     try {
-      await fetch(`${API_URL}/signup`,{
+      await
+      axios({
+        method: 'POST',
+        url:`${API_URL}/signup`,
+        headers:{
+        "Content-Type":"application/json"
+        },
+        data:{
+          name,
+          email,
+          password,
+        }
+      })
+      /* fetch(`${API_URL}/signup`,{
         method: "POST",
         mode: "cors",
         headers: {
@@ -24,15 +39,15 @@ export default function Register(){
           email,
           password,
         }),
-      })
+      }) */
       .then((res) => {
-        if(res.ok){
+        if(res.statusText==="OK"){
           console.log("User created successfully")
         }else{
           console.log("Something went wrong")
         }
         console.log(res);
-        return res.json();
+        return res;
       })
       .then((data) => {
         console.log(data)
