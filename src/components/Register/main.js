@@ -27,40 +27,28 @@ export default function Register(){
           email,
           password,
         }
-      })
-      /* fetch(`${API_URL}/signup`,{
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-        }),
-      }) */
+      })      
       .then((res) => {
-        if(res.statusText==="OK"){
+        console.log("res: ",res);
+        if(res.statusText==="Ok"){
           console.log("User created successfully")
         }else{
           console.log("Something went wrong")
         }
-        console.log(res);
         return res;
       })
       .then((data) => {
-        console.log(data)
+        //console.log("data: ",data)
         if(!data.error){
           alert("User created successfully")
           navigate('/login')
-        }else{
-          alert("An error occurs: \n"+data.error[0].path[0] +" "+ data.error[0].message )
         }
         //window.location.reload()
       });
     } catch (error) {
-      console.log(error)
+      //console.log(error);
+      console.log("An error occurs: \n"+  error.response.data)
+      alert("An error occurs: \n"+  error.response.data)
     }
   }
 
@@ -91,3 +79,15 @@ export default function Register(){
     </div>
   )
 }
+/* fetch(`${API_URL}/signup`,{
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+        }),
+      }) */
