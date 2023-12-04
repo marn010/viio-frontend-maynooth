@@ -28,7 +28,7 @@ export default class Slider extends Component {
   const cart=0;
   return (
       <Carousel
-        autoPlay={true}
+        autoPlay={false}
         autoPlaySpeed={4000}
         arrows={false}
         showDots={true}

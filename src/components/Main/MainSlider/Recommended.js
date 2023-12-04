@@ -17,7 +17,7 @@ export default function Recomended (props){
             data?.carts[0].products.map((item,key) => {
               id = id +1;
                 return (
-                  <div className="hi" key={key}>
+                  <div className="RecomendedProduct" key={key}>
                       <RecomendedProduct id={key} key={id} data={data}/>
                   </div>
                 );

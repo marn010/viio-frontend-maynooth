@@ -3,7 +3,9 @@ import './footer.css'
 export default function Footer(){
   return(
     <div className="footer">
-      <a href="/">Home</a>
+      <div className="home">
+        <a href="/">Home</a>
+      </div>
       <a href='/search'>
         <img src="./assets/search.png" alt="" width="40px" height="40px"/>
       </a>
